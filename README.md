@@ -1,7 +1,83 @@
 # Analyze-Death-Age-Difference-of-Right-Handers-with-Left-Handers
+I will provide the README content in Markdown format.
 
-ProjectDescriptionIn this project, you will explore this phenomenon using age distribution data to see if we canreproduce a difference in average age at death purely from the changing rates of left-handednessover time, refuting the claim of early death for left-handers. This notebook uses pandas and Bayesianstatistics to analyze the probability of being a certain age at death given that you are reported as left-handed or right-handed.ProjectDatasethttps://drive.google.com/uc?export=download&id=1gSjYHJ8OPM9HMd3prr7XuhvSWWGKYZNE
-Task1:InstructionsLoad the handedness data from the National Geographic survey and create a scatter plot.•Import pandas as pd and matplotlib.pyplot as plt.•Load the data into a pandas DataFrame named lefthanded_data using theprovided data_url_1. Note that the file is a CSV file.•Use the .plot() method to create a plot of the "Male" and "Female" columns vs. "Age".Task2:InstructionsAdd two new columns, one for birth year and one for mean left-handedness, then plot the mean as afunction of birth year.•Create a column in lefthanded_data called Birth_year, which is equal to 1986- Age (since the study was done in 1986).•Create a column in lefthanded_data called Mean_lh which is equal to the mean ofthe Male and Female columns.•Use the .plot() method to plot Mean_lh vs. Birth_year.
-Task3:InstructionsCreate a function that will return P(LH | A) for particular ages of death in a given study year.•Import the numpy package aliased as np.•Use the last ten Mean_lh data points to get an average rate for the early 1900s. Name theresulting DataFrame early_1900s_rate.•Use the first ten Mean_lh data points to get an average rate for the late 1900s. Name theresulting DataFrame late_1900s_rate.•For the early 1900s ages, fill in P_return with the appropriate left-handedness ratesfor ages_of_death. That is, input early_1900s_rate as a fraction, i.e., divide by 100.•For the late 1900s ages, fill in P_return with the appropriate left-handedness ratesfor ages_of_death. That is, input late_1900s_rate as a fraction, i.e., divide by 100.When calculating early_1900s_rate and late_1900s_rate, remember that because theoriginal data was from youngest age to oldest age, that means that the data is organized from latestbirth year to earliest birth year. You will use the first ten Mean_lh data points to get an average ratefor the late 1900s and the last ten for the early 1900s.Task4:InstructionsLoad death distribution data for the United States and plot it.•Load death distribution data in the provided data_url_2 into death_distribution_data,setting sep = '\t' and skiprows=[1] to account for the dataset's format.•Drop the NaN values from the Both Sexes column.•Use the .plot() method to plot the number of people who died as a function of their age.
-Task5:InstructionsCreate a function called P_lh() which calculates the overall probability of left-handedness in thepopulation for a given study year.•Create a series, p_list, by multiplying the number of dead people in the BothSexes column with the probability of their being lefthanded using P_lh_given_A().•Set the variable p equal to the sum of that series.•Divide p by the total number of dead people by summing death_distribution_data overthe Both Sexes column. Return result from the function.P(LH | A) was defined in Task 3. N(A) is the value of Both Sexes inthe death_distribution_data DataFrame where the Age column is equal to A. Thedenominator is total number of dead people, which you can get by summing over the entiredataframe in the Both Sexes column.Task6:InstructionsWrite a function to calculate P_A_given_lh().•Calculate P_A, the overall probability of dying at age A, which is givenby death_distribution_data at age A divided by the total number of dead people (thesum of the Both Sexes column of death_distribution_data).•Calculate the overall probability of left-handedness P(LH) using the function defined in Task 5.•Calculate P(LH | A) using the function defined in Task 3.Task7:InstructionsWrite a function to calculate P_A_given_rh().•Calculate P_A, the overall probability of dying at age A, which is givenby death_distribution_data at age A divided by the total number of dead people. (Thisvalue is the same as in task 6.)•Calculate the overall probability of right-handedness P(RH), which is 1-P(LH).•Calculate P(RH | A), which is 1 - P(LH | A).
-Task8:InstructionsPlot the probability of being a certain age at death given that you're left- or right-handed for a rangeof ages.•Calculate P_A_given_lh and P_A_given_rh using the functions defined in Task 6.•Use the .plot() method to plot the results versus age.Task9:InstructionsFind the mean age at death for left-handers and right-handers.•Multiply the ages list by the left-handed probabilities of being those ages at death, thenuse np.nansum to calculate the sum. Assign the result to average_lh_age.•Do the same with the right-handed probabilities to calculate average_rh_age.•Print average_lh_age and average_rh_age.•Calculate the difference between the two average ages and print it.To make your printed output prettier, try using the round() function to round your results to twodecimal places.Task10:InstructionsRedo the calculation from Task 8, setting the study_year parameter to 2018.•In the call to P_A_given_lh,set age_of_death to ages, death_distribution_data to death_distribution_data, and study_year to 2018.•Do the same for P_A_given_rh.
+-----
+
+# Where are the Old Left-Handed People? 🖐️👴👵
+
+## Unraveling the Mystery of Handedness and Longevity
+
+This project explores a fascinating demographic puzzle: the apparent scarcity of older left-handed individuals. While a 1986 National Geographic survey observed a significant decline in left-handedness with increasing age (from \~13% for under 40s to \~5% for 80-year-olds), this project aims to demonstrate that this difference in average age at death can be explained purely by the historical changes in the social acceptability and reporting of left-handedness over time, rather than a biological predisposition to earlier death for left-handers.
+
+Using statistical analysis, particularly **Bayesian statistics**, we will reproduce this age difference and show that the "missing" old left-handers are a consequence of birth year effects, not premature mortality.
+
+## 🚀 Project Goals
+
+  * **Visualize Historical Handedness Trends**: Plot the rates of left-handedness as a function of age and, crucially, as a function of birth year to illustrate the changing prevalence over time.
+  * **Apply Bayes' Theorem**: Utilize conditional probability to calculate the probability of dying at a certain age given one's handedness: $P(\\text{Age at Death} | \\text{Handedness})$.
+  * **Analyze Death Distribution Data**: Incorporate real-world death distribution data (from the US in 1999) to understand the general probability of dying at any given age.
+  * **Determine Overall Handedness Probabilities**: Calculate the overall probability of being left-handed within the deceased population.
+  * **Compare Age at Death Distributions**: Plot and compare the probability distributions of age at death for both left-handed and right-handed individuals.
+  * **Calculate Average Age at Death**: Quantify the average age at death for each handedness group and determine the difference.
+  * **Explore Modern Implications**: Re-evaluate the age gap if the study were conducted today (e.g., in 2018) to observe how changing historical trends impact the results.
+
+## 📊 Data Sources
+
+This analysis uses two key datasets:
+
+1.  **Left-handedness Rates**: Digitized from a figure in a [1992 paper by Gilbert and Wysocki](https://www.ncbi.nlm.nih.gov/pubmed/1528408) based on the 1986 National Geographic survey. This dataset provides age-specific rates of left-handedness for males and females.
+
+      * `lh_data.csv`: Accessible via raw Gist link.
+
+2.  **Death Distribution Data**: For the United States in the year 1999, sourced from the CDC. This data provides the number of deaths per age group, allowing us to estimate the probability of dying at a particular age.
+
+      * [CDC Source Website](https://www.cdc.gov/nchs/nvss/mortality_tables.htm)
+      * `cdc_vs00199_table310.tsv`: Accessible via raw Gist link.
+
+## 💻 Technologies Used
+
+  * `Python`
+  * `pandas` for data manipulation and analysis
+  * `numpy` for numerical operations
+  * `matplotlib` for data visualization
+
+## ✨ Key Insights & Findings (Spoiler Alert\!)
+
+Our analysis demonstrates that the observed age gap between left-handed and right-handed individuals at death can be largely explained by the generational shift in left-handedness prevalence. Historically, societal pressures led to a lower reported rate of left-handedness among older generations. When observing a sample of recently deceased individuals, this means there will naturally be more older right-handers, creating an *apparent* age difference.
+
+The project highlights the importance of considering historical context and demographic changes when interpreting statistical observations. The "early death" claim for left-handers is likely a statistical artifact rather than a biological reality.
+
+## 🏃 How to Run the Project
+
+1.  **Clone the Repository**:
+    ```bash
+    git clone https://github.com/your-username/your-repository-name.git
+    cd your-repository-name
+    ```
+2.  **Create a Virtual Environment (Recommended)**:
+    ```bash
+    python -m venv venv
+    # On Windows
+    .\venv\Scripts\activate
+    # On macOS/Linux
+    source venv/bin/activate
+    ```
+3.  **Install Dependencies**:
+    ```bash
+    pip install pandas numpy matplotlib
+    ```
+4.  **Open and Run the Jupyter Notebook**:
+    ```bash
+    jupyter notebook notebook.ipynb
+    ```
+    Follow the instructions within the `notebook.ipynb` file to execute the code cells sequentially and observe the analysis unfold.
+
+## 🤝 Contributing
+
+Contributions are welcome\! If you have suggestions for improvements, new features, or find any issues, please open an issue or submit a pull request.
+
+## 📄 License
+
+This project is open-source and available under the [MIT License](https://www.google.com/search?q=LICENSE).
+
+-----
