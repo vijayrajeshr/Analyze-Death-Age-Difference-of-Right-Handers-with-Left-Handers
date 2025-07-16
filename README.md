@@ -47,31 +47,6 @@ Our analysis demonstrates that the observed age gap between left-handed and righ
 
 The project highlights the importance of considering historical context and demographic changes when interpreting statistical observations. The "early death" claim for left-handers is likely a statistical artifact rather than a biological reality.
 
-## 🏃 How to Run the Project
-
-1.  **Clone the Repository**:
-    ```bash
-    git clone https://github.com/your-username/your-repository-name.git
-    cd your-repository-name
-    ```
-2.  **Create a Virtual Environment (Recommended)**:
-    ```bash
-    python -m venv venv
-    # On Windows
-    .\venv\Scripts\activate
-    # On macOS/Linux
-    source venv/bin/activate
-    ```
-3.  **Install Dependencies**:
-    ```bash
-    pip install pandas numpy matplotlib
-    ```
-4.  **Open and Run the Jupyter Notebook**:
-    ```bash
-    jupyter notebook notebook.ipynb
-    ```
-    Follow the instructions within the `notebook.ipynb` file to execute the code cells sequentially and observe the analysis unfold.
-
 ## 🤝 Contributing
 
 Contributions are welcome\! If you have suggestions for improvements, new features, or find any issues, please open an issue or submit a pull request.
@@ -80,4 +55,3 @@ Contributions are welcome\! If you have suggestions for improvements, new featur
 
 This project is open-source and available under the [MIT License](https://www.google.com/search?q=LICENSE).
 
------
