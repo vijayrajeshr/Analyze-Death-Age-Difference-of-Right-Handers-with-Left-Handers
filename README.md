@@ -1,6 +1,4 @@
 # Analyze-Death-Age-Difference-of-Right-Handers-with-Left-Handers
-I will provide the README content in Markdown format.
-
 -----
 
 # Where are the Old Left-Handed People? 🖐️👴👵
