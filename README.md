@@ -1,7 +1,6 @@
 # Analyze-Death-Age-Difference-of-Right-Handers-with-Left-Handers
------
 
-# Where are the Old Left-Handed People? 🖐️👴👵
+### Where are the Old Left-Handed People? 🖐️👴👵
 
 ## Unraveling the Mystery of Handedness and Longevity
 
